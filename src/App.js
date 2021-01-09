@@ -11,7 +11,7 @@ function App() {
         {!signedIn ? (
           <SignIn signedIn={signedIn} setSignedIn={setSignedIn} />
         ) : (
-          <CardItem />
+          <CardItem signedIn={signedIn} setSignedIn={setSignedIn} />
         )}
       </div>
     </div>

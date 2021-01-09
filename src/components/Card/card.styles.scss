@@ -1,36 +1,34 @@
+.container {
+  position: relative;
+}
 .card {
+  width: 90%;
+  margin: 0 auto;
+  height: 25rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 10px;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  .container {
-    width: 45rem;
-    height: 20rem;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 10px;
-    padding: 1rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-    .question {
-      font-weight: 500;
-    }
+  overflow-y: scroll;
 
-    .question,
-    .answer {
-      font-size: 1rem;
-      line-height: 1.8rem;
-      color: #444;
-      scrollbar-base-color: #444;
-    }
+  .question {
+    font-weight: 500;
+  }
 
-    .animation {
-      animation: fadein 2s;
-    }
+  .question,
+  .answer {
+    font-size: 1rem;
+    line-height: 1.8rem;
+    color: #444;
+    scrollbar-base-color: #444;
+  }
+
+  .animation {
+    animation: fadein 2s;
   }
 }
 
@@ -44,6 +42,7 @@
     .fa-angle-right {
       margin-left: 5px;
     }
+
     &-prev {
       background: linear-gradient(45deg, #eeecec 30%, #eeecec 90%);
       // box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
@@ -79,10 +78,11 @@
 
 .flip-card {
   position: absolute;
-  left: 45%;
-  bottom: 10px;
+  top: -1%;
+  left: 95%;
   text-transform: lowercase !important;
   color: #777 !important;
+  transform: translateX(-100%);
 
   .fa-undo-alt {
     margin-left: 5px;
@@ -92,7 +92,17 @@
 .add-card {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 93%;
+  transform: translateX(100%);
   text-transform: lowercase !important;
   color: #777 !important;
+}
+
+.btn.btn-signout {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  i {
+    margin-left: 7px;
+  }
 }

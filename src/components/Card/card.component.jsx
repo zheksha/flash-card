@@ -4,7 +4,7 @@ import { db } from "../FireBase/firebase";
 import SimpleModal from "../Modal/modal.component";
 import "./card.styles.scss";
 
-const CardItem = () => {
+const CardItem = ({ signedIn, setSignedIn }) => {
   const [card, setCard] = useState({});
   const [cardList, setCardList] = useState([]);
   const [currentBlock, setCurrenBlock] = useState("");
@@ -13,6 +13,10 @@ const CardItem = () => {
   let [currentCard, setCurrentCard] = useState(0);
 
   //Functions
+
+  const signOut = () => {
+    setSignedIn(false);
+  };
 
   const onFlip = () => {
     setFlipped(flipped ? true : false);
@@ -77,7 +81,10 @@ const CardItem = () => {
 
   return (
     <React.Fragment>
-      <div className="card" onClick={onFlip}>
+      <Button onClick={signOut} className="btn btn-signout">
+        Sign out <i className="fas fa-sign-out-alt"></i>
+      </Button>
+      <div className="container " onClick={onFlip}>
         <div className="add-card">
           <SimpleModal
             onInputChange={onInputChange}
@@ -89,7 +96,7 @@ const CardItem = () => {
         <Button onClick={onFlip} size="small" className="flip-card">
           flip card <i className="fas fa-undo-alt"></i>
         </Button>
-        <div className="container">{currentBlock}</div>
+        <div className="card">{currentBlock}</div>
       </div>
       <div className="buttons">
         <Button onClick={prevPage} className="btn btn-prev">

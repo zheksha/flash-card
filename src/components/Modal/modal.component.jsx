@@ -43,7 +43,6 @@ export default function SimpleModal({
   const body = (
     <div className="form">
       <h3 className="title">Add new card</h3>
-
       <textarea
         name="question"
         className="form-question"
@@ -69,6 +68,7 @@ export default function SimpleModal({
   return (
     <div>
       <i type="button" onClick={handleOpen} className="fas fa-plus-circle"></i>
+
       <Modal
         open={open}
         onClose={handleClose}
