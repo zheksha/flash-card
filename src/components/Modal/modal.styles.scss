@@ -1,0 +1,39 @@
+.form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  width: 400;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 10px;
+  padding: 15px;
+  transform: translate(-50%, -50%);
+  outline: none;
+
+  .title {
+    color: #444;
+    margin: 10px;
+  }
+  textarea {
+    padding: 10px;
+    font-family: "Roboto", "Courier New", Courier, monospace;
+    background-color: rgb(229, 229, 229);
+    margin: 10px;
+    font-size: 1rem;
+  }
+
+  .button {
+    width: 5rem;
+    background: linear-gradient(45deg, #eeecec 30%, #eeecec 90%);
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 10px;
+    border: 0;
+    border-radius: 3px;
+    height: 40px;
+    padding: 0 30px;
+    margin: 15px;
+  }
+}
