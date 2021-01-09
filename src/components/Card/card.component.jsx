@@ -8,7 +8,7 @@ const CardItem = ({ signedIn, setSignedIn }) => {
   const [card, setCard] = useState({});
   const [cardList, setCardList] = useState([]);
   const [currentBlock, setCurrenBlock] = useState("");
-  const [flipped, setFlipped] = useState(true);
+  const [flipped, setFlipped] = useState(false);
   const [fireBaseUpdated, setFireBaseUpdated] = useState(false);
   let [currentCard, setCurrentCard] = useState(0);
 
@@ -18,9 +18,13 @@ const CardItem = ({ signedIn, setSignedIn }) => {
     setSignedIn(false);
   };
 
+  const dataUpdate = () => {
+    setFireBaseUpdated(false ? true : false);
+  };
+
   const onFlip = () => {
-    setFlipped(flipped ? true : false);
-    setCurrenBlock(flipped ? answerBlock : questionBlock);
+    setCurrenBlock(!flipped ? answerBlock : questionBlock);
+    setFlipped(flipped ? false : true);
   };
 
   const onInputChange = (e) => {
@@ -33,35 +37,17 @@ const CardItem = ({ signedIn, setSignedIn }) => {
     setCardList([...cardList, card]);
   };
 
-  const dataUpdate = () => {
-    setFireBaseUpdated(false ? true : false);
-  };
-
   const prevPage = () => {
     if (currentCard < 0) return;
     setCurrentCard((currentCard = currentCard - 1));
+    setFlipped(false);
   };
 
   const nextPage = () => {
     if (currentCard >= cardList.length) return;
     setCurrentCard((currentCard = currentCard + 1));
+    setFlipped(false);
   };
-
-  const questionBlock = (
-    <div className={`question `}>
-      {cardList[currentCard]
-        ? cardList[currentCard].question
-        : "Please Enter Card"}
-    </div>
-  );
-
-  const answerBlock = (
-    <div className={`answer animation`}>
-      {cardList[currentCard]
-        ? cardList[currentCard].answer
-        : "Please Enter Card"}
-    </div>
-  );
 
   useEffect(() => {
     setCurrenBlock([questionBlock]);
@@ -79,6 +65,22 @@ const CardItem = ({ signedIn, setSignedIn }) => {
     })();
   }, [fireBaseUpdated]);
 
+  const questionBlock = (
+    <div className={`question `}>
+      {cardList[currentCard]
+        ? cardList[currentCard].question
+        : "Please Enter Card"}
+    </div>
+  );
+
+  const answerBlock = (
+    <div className={`answer animation`}>
+      {cardList[currentCard]
+        ? cardList[currentCard].answer
+        : "Please Enter Card"}
+    </div>
+  );
+
   return (
     <React.Fragment>
       <Button onClick={signOut} className="btn btn-signout">
@@ -93,7 +95,7 @@ const CardItem = ({ signedIn, setSignedIn }) => {
             dataUpdate={dataUpdate}
           />
         </div>
-        <Button onClick={onFlip} size="small" className="flip-card">
+        <Button size="small" className="flip-card">
           flip card <i className="fas fa-undo-alt"></i>
         </Button>
         <div className="card">{currentBlock}</div>
